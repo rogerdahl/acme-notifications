@@ -1,0 +1,8 @@
+.idea/
+.idea_modules/
+cert/
+
+*.pyc
+db.sqlite
+settings.py
+slack_custom.py

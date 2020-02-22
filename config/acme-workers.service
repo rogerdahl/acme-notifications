@@ -1,0 +1,18 @@
+# systemd unit file for workers
+
+[Unit]
+Description=ACME Workers
+After=syslog.target
+
+[Service]
+WorkingDirectory=/home/pi/web/acme-notifications/workers
+ExecStart=/home/pi/.pyenv/versions/3.8.1/envs/global-3.8.1/bin/python ble_fwd.py
+User=www-data
+Group=www-data
+Restart=always
+KillSignal=SIGQUIT
+Type=simple
+#NotifyAccess=all
+
+[Install]
+WantedBy=multi-user.target

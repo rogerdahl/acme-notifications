@@ -1,0 +1,20 @@
+# systemd unit file for UWSGI emperor service
+
+[Unit]
+Description=uWSGI Emperor
+After=syslog.target
+
+[Service]
+WorkingDirectory=/home/pi/web/acme-notifications/
+ExecStart=/home/pi/.pyenv/versions/3.8.1/envs/global-3.8.1/bin/uwsgi --ini /etc/uwsgi/emperor.ini
+User=www-data
+Group=www-data
+RuntimeDirectory=uwsgi
+LogsDirectory=uwsgi
+Restart=always
+KillSignal=SIGQUIT
+Type=notify
+NotifyAccess=all
+
+[Install]
+WantedBy=multi-user.target
